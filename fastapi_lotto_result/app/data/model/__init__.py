@@ -1,0 +1,1 @@
+from app.data.model.lotto_draw_result import LottoDrawResult

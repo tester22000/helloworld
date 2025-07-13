@@ -1,0 +1,4 @@
+.env
+lotto.db
+venv/
+__pycache__/

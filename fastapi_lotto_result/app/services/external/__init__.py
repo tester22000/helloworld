@@ -1,0 +1,1 @@
+from app.services.external.lotto_result_service import  get_lotto_draw_result
