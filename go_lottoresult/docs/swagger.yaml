@@ -1,0 +1,59 @@
+basePath: /api
+definitions:
+  models.LottoDrawResult:
+    properties:
+      bnusNo:
+        type: integer
+      drwNo:
+        type: integer
+      drwNoDate:
+        type: string
+      drwtNo1:
+        type: integer
+      drwtNo2:
+        type: integer
+      drwtNo3:
+        type: integer
+      drwtNo4:
+        type: integer
+      drwtNo5:
+        type: integer
+      drwtNo6:
+        type: integer
+      firstAccumamnt:
+        type: integer
+      firstPrzwnerCo:
+        type: integer
+      firstWinamnt:
+        type: integer
+      returnValue:
+        type: string
+      totSellamnt:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  title: golang Lotto Draw Result Sample API
+  version: "1.0"
+paths:
+  /lotto_draw_result/{drwNo}:
+    get:
+      consumes:
+      - application/json
+      description: get lotto draw result by drwNo
+      parameters:
+      - description: drwNo
+        in: path
+        name: drwNo
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            $ref: '#/definitions/models.LottoDrawResult'
+      summary: get lotto draw result
+swagger: "2.0"

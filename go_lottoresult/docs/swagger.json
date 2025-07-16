@@ -1,0 +1,90 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "golang Lotto Draw Result Sample API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/api",
+    "paths": {
+        "/lotto_draw_result/{drwNo}": {
+            "get": {
+                "description": "get lotto draw result by drwNo",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get lotto draw result",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "drwNo",
+                        "name": "drwNo",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/models.LottoDrawResult"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.LottoDrawResult": {
+            "type": "object",
+            "properties": {
+                "bnusNo": {
+                    "type": "integer"
+                },
+                "drwNo": {
+                    "type": "integer"
+                },
+                "drwNoDate": {
+                    "type": "string"
+                },
+                "drwtNo1": {
+                    "type": "integer"
+                },
+                "drwtNo2": {
+                    "type": "integer"
+                },
+                "drwtNo3": {
+                    "type": "integer"
+                },
+                "drwtNo4": {
+                    "type": "integer"
+                },
+                "drwtNo5": {
+                    "type": "integer"
+                },
+                "drwtNo6": {
+                    "type": "integer"
+                },
+                "firstAccumamnt": {
+                    "type": "integer"
+                },
+                "firstPrzwnerCo": {
+                    "type": "integer"
+                },
+                "firstWinamnt": {
+                    "type": "integer"
+                },
+                "returnValue": {
+                    "type": "string"
+                },
+                "totSellamnt": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
