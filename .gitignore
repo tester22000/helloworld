@@ -1,7 +1,7 @@
 !**/src/main/**/bin/
 !**/src/main/**/build/
 !**/src/main/**/out/
-!**/src/test/**/bin/
+!**src/test/**/bin/
 !**/src/test/**/build/
 !**/src/test/**/out/
 !gradle/wrapper/gradle-wrapper.jar
@@ -108,3 +108,4 @@ vcs.xml
 venv/
 yarn-debug.log*
 yarn-error.log*
+.nuxt/
