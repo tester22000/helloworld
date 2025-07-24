@@ -1,4 +1,4 @@
-import "@/app/ui/global.css"
+import "@/app/ui/css/global.css"
 import { notoSansKr } from '@/app/ui/fonts'
 
 export default function RootLayout({

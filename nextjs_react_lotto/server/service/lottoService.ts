@@ -1,10 +1,10 @@
 'use server'
-import { getLastDrawnNo } from '@/app/lib/utils/lottoUtils'
-import { getLottoResult , insertLottoResult } from '@/app/lib/db/lotto_result'
-import { getLottoDrawResultFromService } from '@/app/lib/external/lottoservice'
-import { LottoDrawResult } from './domain'
+import { getLastDrawnNo } from '@/utils/lottoUtils'
+import { getLottoResult , insertLottoResult } from '@/server/data/repository/lottoRequestRepository'
+import { getLottoDrawResultFromService } from '@/server/service/external/lottoExternalService'
+import { type LottoDrawResultModel } from '@/data/model/lottoDrawResultModel';
 
-export async function getLottoDrawResult(drwNo : number) : Promise<LottoDrawResult | undefined>  {
+export async function getLottoDrawResult(drwNo : number) : Promise<LottoDrawResultModel | undefined>  {
    const lastDrawnNo = getLastDrawnNo()
    const getDrawwNo = drwNo <= lastDrawnNo ? drwNo: lastDrawnNo
    const fromDb = await getLottoResult(getDrawwNo)

@@ -22,7 +22,7 @@ export const getKoreanDate = (date:Date) => {
 
 export const getDateFromYmd = (year:number, month:number, day:number) => {
     const dateObj = getSDateFromYmd(year, month, day)
-    return getKoreanDate(new Date(`${dateObj.year}-${dateObj.month}-${dateObj.day}:00:00:00+09:00`))
+    return getKoreanDate(new Date(`${dateObj.year}-${dateObj.month}-${dateObj.day}T00:00:00+09:00`))
 }
 
 export const getYYYYMMDD = (date:Date) => {

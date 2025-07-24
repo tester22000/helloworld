@@ -1,4 +1,4 @@
-export type LottoDrawResult = {
+export type LottoDrawResultModel = {
     returnValue: string; // 요청결과
     drwNoDate: string; // 날짜
     totSellamnt: number;
@@ -13,10 +13,4 @@ export type LottoDrawResult = {
     drwtNo6: number; // 로또번호 6
     bnusNo: number; // 로또 보너스 번호
     drwNo: number; // 로또회차
-}
-
-export type SDate = {
-    year:string;
-    month:string;
-    day:string;
 }

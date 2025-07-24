@@ -1,4 +1,6 @@
-import styles from '@/app/ui/lotto.module.css'
+'use client'
+
+import styles from '@/app/ui/css/lotto.module.css'
 
 const ball_styles = [
     styles.ball1,

@@ -1,7 +1,7 @@
 import path from 'path'
 import sqlite3 from 'sqlite3'
 
-const dbPath = path.join(process.cwd(), 'lotto-db')
+const dbPath = path.join(process.cwd(), 'lotto.sqlite.db')
 
 export const sqliteDB = new sqlite3.Database(
     dbPath, 

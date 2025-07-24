@@ -1,15 +1,31 @@
 'use server'
 
-import { LottoDrawResult } from "../domain";
-import { sqliteDB } from "./sqlite";
+import { type  LottoDrawResultModel} from "@/data/model/lottoDrawResultModel";
+import { sqliteDB } from "@/server/data/repository/sqlite";
 
-export async function getLottoResult(drwNo: number) : Promise<LottoDrawResult | undefined> {
+export async function getLottoResult(drwNo: number) : Promise<LottoDrawResultModel | null> {
     return new Promise( (resolve, reject) => {
-        sqliteDB.get('SELECT * FROM lotto_result WHERE drw_no=?',[drwNo],(err,row) =>{
+        sqliteDB.get('SELECT * FROM lotto_result WHERE drw_no=?',[drwNo],(err,rowData) =>{
             if(err){
                 return reject(err)
             }
-            if( row ) {
+            if( rowData ) {
+                const row = rowData as {
+                    drw_no: any,
+                    drwno_date: any,
+                    tot_sell_amnt: any,
+                    first_win_amnt: any,
+                    first_prz_wner_co: any,
+                    first_win_tot_amnt: any,
+                    drwt_no1: any,
+                    drwt_no2: any,
+                    drwt_no3: any,
+                    drwt_no4: any,
+                    drwt_no5: any,
+                    drwt_no6: any,
+                    bnusNo: any
+                }
+
                 resolve({
                     drwNo : row['drw_no'],
                     drwNoDate: row['drwno_date'],
@@ -24,7 +40,7 @@ export async function getLottoResult(drwNo: number) : Promise<LottoDrawResult | 
                     drwtNo5: row['drwt_no5'],
                     drwtNo6: row['drwt_no6'],
                     bnusNo: row['bnusNo'],
-                } as LottoDrawResult)
+                } as LottoDrawResultModel)
             } 
             resolve(null)
         })
@@ -48,7 +64,7 @@ INSERT INTO lotto_result (
     first_win_tot_amnt
 ) values(?,?,?,?,?,?,?,?,?,?,?,?,?)
 `
-export async function insertLottoResult(lottoResult : LottoDrawResult){
+export async function insertLottoResult(lottoResult : LottoDrawResultModel){
     return new Promise( (resolve, reject) => {
         sqliteDB.run(lotto_result_insert_sql,[
             lottoResult.drwNo,
@@ -82,4 +98,35 @@ export async function deleteLottoResult(drwNo: number){
             resolve(null)
         })
     })
+}
+
+const lotto_result_sql = `
+    create table if not exists lotto_result (
+        drw_no INT NOT NULL PRIMARY KEY,
+        drwt_no1 INT NOT NULL,
+        drwt_no2 INT NOT NULL,
+        drwt_no3 INT NOT NULL,
+        drwt_no4 INT NOT NULL,
+        drwt_no5 INT NOT NULL,
+        drwt_no6 INT NOT NULL,
+        bnusNo INT NOT NULL,
+        drwno_date VARCHAR(200),
+        tot_sell_amnt BIGINT,
+        first_win_amnt INT,
+        first_prz_wner_co INT,
+        first_win_tot_amnt BIGINT
+    );
+`
+export async function createLottoResult() {
+    return new Promise( (resolve, reject) => {
+        sqliteDB.run(lotto_result_sql,
+            (err: Error) => {
+                if(err){
+                    return reject(err)
+                }
+                return resolve(null)
+            }
+        )
+    })
+
 }

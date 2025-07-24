@@ -1,7 +1,9 @@
-import { LottoDrawResult } from "@/app/lib/domain"
-import { numberFormat } from '@/app/lib/utils/numberUtils'
+'use client'
 
-export function LottoResultInfo({ data }: { data: LottoDrawResult }) {
+import { type LottoDrawResultModel } from "@/data/model/lottoDrawResultModel"
+import { numberFormat } from '@/utils/numberUtils'
+
+export function LottoResultInfo({ data }: { data: LottoDrawResultModel }) {
     const style_padding= 'pt-[13px] px-[9px] pb-[15px] '
     const style_th = 'bg-[#f5f5f5] font-normal leading-[22px]'
     const style_td = 'bg-[#fff] font-[#767676] font-[300] leading-[22px] font-normal leading-[22px] align-middle'
@@ -25,9 +27,9 @@ export function LottoResultInfo({ data }: { data: LottoDrawResult }) {
             <tbody>
                 <tr>
                     <td className={`${style_padding} ${style_th} ${style_line} text-center`} >1등</td>
-                    <td className={`${style_padding} ${style_th} ${style_line} text-end`} ><strong className="font-[300] text-[#d43301]">{ numberFormat(data.firstWinamnt)}원</strong></td>
-                    <td className={`${style_padding} ${style_th} ${style_line} text-center`}>{data.firstPrzwnerCo}</td>
-                    <td className={`${style_padding} ${style_th} ${style_line} text-end`}>{numberFormat(data.firstAccumamnt)}원</td>
+                    <td className={`${style_padding} ${style_th} ${style_line} text-end`} ><strong className="font-[300] text-[#d43301]">{ numberFormat(data ? data.firstWinamnt : 0)}원</strong></td>
+                    <td className={`${style_padding} ${style_th} ${style_line} text-center`}>{data ? data.firstPrzwnerCo : 0}</td>
+                    <td className={`${style_padding} ${style_th} ${style_line} text-end`}>{numberFormat(data ? data.firstAccumamnt : 0)}원</td>
                 </tr>
             </tbody>
         </table>

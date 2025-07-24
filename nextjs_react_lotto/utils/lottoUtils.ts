@@ -3,7 +3,7 @@ import {
     getKoreanDate,
     weekDiff,
     addWeeks
-} from "@/app/lib/utils/dateUtils"
+} from "@/utils/dateUtils"
 
 const START_DATE = getDateFromYmd(2002, 12, 7)
 const DRAW_HOUR_MIN = 2045

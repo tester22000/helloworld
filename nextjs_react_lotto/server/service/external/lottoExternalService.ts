@@ -1,12 +1,12 @@
 'use server'
 
-import type { LottoDrawResult } from '@/app/lib/domain'
-import { getLastDrawnNo } from '@/app/lib/utils/lottoUtils'
+import type { LottoDrawResultModel } from '@/data/model/lottoDrawResultModel'
+import { getLastDrawnNo } from '@/utils/lottoUtils'
 import axios from 'axios'
 
 const LOTTO_CHECK_BASE_URL = 'https://www.dhlottery.co.kr/'
 
-export async function getLottoDrawResultFromService(drawNo?: number): Promise<LottoDrawResult | undefined> {
+export async function getLottoDrawResultFromService(drawNo?: number): Promise<LottoDrawResultModel | undefined> {
     const checkDrawNo = drawNo ? drawNo : getLastDrawnNo()
 
     try {
