@@ -2,6 +2,10 @@ import SwiftUI
 
 @Observable
 class LottoDrawResultViewModel {
+    private var lottoService : LottoService
+    @MainActor init() {
+        self.lottoService = LottoService.shared
+    }
     var drwNo: Int? {
         didSet {
             Task {
@@ -9,12 +13,15 @@ class LottoDrawResultViewModel {
             }
         }
     }
-    var drawData: LottoDrawData?
+    var drawData: LottoDrawResultModel?
 }
 
 extension LottoDrawResultViewModel {
+    func setLottoService(lottoService: LottoService){
+        self.lottoService = lottoService
+    }
     func fetchLottoDrawResult() async throws {
-        self.drawData = try? await LottoService.getLottoDrawResult(drwNo!)
+        self.drawData = try? await lottoService.getLottoDrawResult(drwNo!)
     }
     func hasPrevious() -> Bool {
         guard let drwNo = drwNo else { return false }

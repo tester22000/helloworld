@@ -1,19 +1,20 @@
 import SwiftUI
 
-struct PrevButton : View {
+struct NextButton : View {
     let model : LottoDrawResultViewModel
     var body: some View {
-        if model.drawData != nil && model.hasPrevious() {
+        if model.drawData != nil && model.hasNext() {
             Button {
-                model.dec()
+                model.inc()
             } label : {
-                Image(systemName:"chevron.left")
+                Image(systemName:"chevron.right")
                     .font(.largeTitle)
             }
             .padding([.top],20)
             .padding([.horizontal],10)
+            .buttonStyle(.plain)
         } else {
-            VStack {}
+            VStack{}
                 .padding([.top],20)
                 .padding([.horizontal],20)
         }

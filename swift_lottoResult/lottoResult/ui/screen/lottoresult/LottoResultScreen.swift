@@ -1,14 +1,17 @@
 import SwiftUI
+import SwiftData
 
-struct ContentView: View {
+struct LottoResultScreen: View {
     private let lastDrwNo = lastDrawnNo()
-    @State var model = LottoDrawResultViewModel()
+    @Environment(\.modelContext) private var modelContext
     
+    @State private var model:LottoDrawResultViewModel = LottoDrawResultViewModel()
+  
     var body: some View {
         HStack(alignment: .center) {
             PrevButton(model: model)
             if model.drawData != nil {
-                LottoDrawResult(lottoResult: model.drawData!)
+                LottoDrawResultView(lottoResult: model.drawData!)
                     .gesture(
                         DragGesture(minimumDistance: 0, coordinateSpace: .local)
                             .onEnded({ value in
@@ -43,7 +46,7 @@ struct ContentView: View {
         .padding([.top],40)
         .padding([.horizontal],10)
 
-        LottoDrawResult(lottoResult: LottoDrawData(
+        LottoDrawResultView(lottoResult: LottoDrawResultModel(
             returnValue: "success",
             drwNoDate: "2024-11-11",
             totSellamnt: 1111,

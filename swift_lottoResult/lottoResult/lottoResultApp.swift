@@ -1,17 +1,11 @@
-//
-//  lottoResultApp.swift
-//  lottoResult
-//
-//  Created by lee zainy on 6/27/25.
-//
-
 import SwiftUI
+import SwiftData
 
 @main
 struct lottoResultApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LottoResultScreen()
                 .frame(width:800, height: 400)
         }
         .windowResizability(.contentSize)

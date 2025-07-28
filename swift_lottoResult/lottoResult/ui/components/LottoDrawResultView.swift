@@ -17,8 +17,8 @@ private func getNumberString(_ number: UInt64) -> String {
     return numberFormat.string(from: NSNumber(value: number)) ?? ""
 }
 
-struct LottoDrawResult: View {
-    var lottoResult : LottoDrawData
+struct LottoDrawResultView: View {
+    var lottoResult : LottoDrawResultModel
     private func getDrawDate() -> String {
         let drawDate = lottoResult.drwNoDate
         let year = drawDate.substring(from: 0, to: 4)
@@ -88,8 +88,8 @@ struct LottoDrawResult: View {
 
 #Preview {
     VStack {
-        LottoDrawResult( lottoResult:
-            LottoDrawData(
+        LottoDrawResultView( lottoResult:
+            LottoDrawResultModel(
                 returnValue: "success",
                 drwNoDate: "2023-11-11",
                 totSellamnt: 123214124,

@@ -1,20 +1,34 @@
-import Foundation
+import SwiftUI
+import SwiftData
 
 struct LottoService {
+    private let modelContainer: ModelContainer
+    private let modelContext: ModelContext
+    private var repository : LottoDrawResultRepository
     
-    static func getLottoDrawResult(_ drwNo: Int) async throws -> LottoDrawData? {
-        let url = URL(string: "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(drwNo)")!
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let decoder = JSONDecoder()
-        do {
-            let lottoDrawResult = try decoder.decode(LottoDrawData.self, from: data)
-            if lottoDrawResult.returnValue == LottoDrawData.RETURN_VALUE_SUCCESS {
-                return lottoDrawResult
-            }
-            return nil
-        } catch {
-            print("decode error \(error)")
-        }
-        return nil
+    @MainActor static let shared = LottoService()
+    
+    @MainActor private init() {
+        let storeURL = URL.documentsDirectory.appending(path:"lotto.sqlite.db")
+        self.modelContainer = try! ModelContainer(
+            for: LottoDrawResultModel.self,
+            configurations: ModelConfiguration(url: storeURL)
+        )
+        self.modelContext = modelContainer.mainContext
+        self.repository = LottoDrawResultRepository(modelContext: modelContext)
     }
+    
+    func getLottoDrawResult(_ drwNo: Int) async -> LottoDrawResultModel? {
+        guard let model = repository.getLottoResult(drwNo) else {
+            do {
+                if let model = try await LottoExternalService.getLottoDrawResult(drwNo) {
+                    repository.addLottoResult(model)
+                    return model
+                }
+            } catch {}
+            return nil
+        }
+        return model
+    }
+    
 }
