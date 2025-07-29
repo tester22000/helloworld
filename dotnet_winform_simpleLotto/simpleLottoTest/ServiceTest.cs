@@ -1,5 +1,5 @@
-﻿using simpleLotto.model;
-using simpleLotto.service;
+﻿using simpleLotto.data.model;
+using simpleLotto.service.external;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace simpleLottoTest {
         [TestMethod]
         public async Task LottoServiceTest() {
             int drwNo = 1000;
-            LottoDrawResult result = await LottoResultService.LottoDrawResult(drwNo);
+            LottoDrawResult result = await LottoResultExternalService.GetLottoDrawResult(drwNo);
             Assert.IsNotNull(result);
             Assert.AreEqual(drwNo, result.drwNo);
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +8,9 @@ namespace simpleLotto.utils {
     //readonly TimeZoneInfo seoulTimeZOne = TimeZoneInfo.
      public static class DateUtils {
         internal struct SDate {
-            public String Year { get; }
-            public String Month { get; }
-            public String Day { get; }
+            public string Year { get; }
+            public string Month { get; }
+            public string Day { get; }
 
             public SDate(DateTime date) : this(date.Year, date.Month, date.Day){ }
             public SDate(int year, int month, int day) {
@@ -19,7 +19,7 @@ namespace simpleLotto.utils {
                 Day = day < 10 ? $"0{day}" : $"{day}";
             }
 
-            public String GetYYYYMMD() {
+            public string GetYYYYMMD() {
                 return $"{Year}{Month}{Day}";
             }
         }
@@ -48,13 +48,13 @@ namespace simpleLotto.utils {
             return GetKoreanDateTime(GetUtcFromKoreanDateFromYmd(year, month, day));
         }
 
-        public static String GetYYYMMDD(DateTime date) {
+        public static string GetYYYMMDD(DateTime date) {
             DateTime korean = GetKoreanDateTime(date);
             SDate sdate = new SDate(korean);
             return sdate.GetYYYYMMD();
         }
 
-        public static String GetDateString(DateTime date) {
+        public static string GetDateString(DateTime date) {
             SDate sdate = new SDate(GetKoreanDateTime(date));
             return $"{sdate.Year}-{sdate.Month}-{sdate.Day}";
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ namespace simpleLotto.utils {
         private static int DRAW_HOUR_MIN = 2045;
 
         private static bool IsBeforeDrawTime(DateTime dateTime) {
-            return (dateTime.Hour * 100 + dateTime.Minute) < DRAW_HOUR_MIN;
+            return dateTime.Hour * 100 + dateTime.Minute < DRAW_HOUR_MIN;
         }
 
         private static Tuple<DateTime, int> GetDrawInfo() {

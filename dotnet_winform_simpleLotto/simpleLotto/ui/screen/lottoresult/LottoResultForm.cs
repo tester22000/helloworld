@@ -1,5 +1,6 @@
-using simpleLotto.model;
+using simpleLotto.data.model;
 using simpleLotto.service;
+using simpleLotto.service.external;
 using simpleLotto.utils;
 
 namespace simpleLotto
@@ -52,7 +53,7 @@ namespace simpleLotto
 
         private async Task LoadLottoResult(int drwNo) {
             try {
-                LottoDrawResult result = await LottoResultService.LottoDrawResult(drwNo);
+                LottoDrawResult result = await LottoResultService.GetLottoDrawResult(drwNo);
                 showLottoResult(result);
             } catch (Exception ex) {
                 //

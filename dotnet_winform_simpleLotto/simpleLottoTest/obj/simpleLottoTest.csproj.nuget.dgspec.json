@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj": {}
+    "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj": {}
   },
   "projects": {
-    "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj": {
+    "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj",
+        "projectUniqueName": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj",
         "projectName": "simpleLottoTest",
-        "projectPath": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj",
+        "projectPath": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLottoTest\\simpleLottoTest.csproj",
         "packagesPath": "C:\\Users\\eastg\\.nuget\\packages\\",
-        "outputPath": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLottoTest\\obj\\",
+        "outputPath": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLottoTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\simpleLotto.csproj": {
-                "projectPath": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\simpleLotto.csproj"
+              "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\simpleLotto.csproj": {
+                "projectPath": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\simpleLotto.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\simpleLotto.csproj": {
+    "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\simpleLotto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\simpleLotto.csproj",
+        "projectUniqueName": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\simpleLotto.csproj",
         "projectName": "simpleLotto",
-        "projectPath": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\simpleLotto.csproj",
+        "projectPath": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\simpleLotto.csproj",
         "packagesPath": "C:\\Users\\eastg\\.nuget\\packages\\",
-        "outputPath": "C:\\tutorial\\myandtutorial\\windows\\simpleLotto\\simpleLotto\\obj\\",
+        "outputPath": "C:\\tutorial\\helloworld\\dotnet_winform_simpleLotto\\simpleLotto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -128,6 +128,18 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,5 +1,4 @@
-﻿
-using simpleLotto.utils;
+﻿using simpleLotto.utils;
 
 namespace simpleLottoTest {
     [TestClass]

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace simpleLotto.component {
+namespace simpleLotto.Ui.Component {
     public class LottoBall : Label, IComponent {
 
         private static Color[] BallColors = {
@@ -28,17 +28,17 @@ namespace simpleLotto.component {
         }
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
-            this.Width = 60;
-            this.Height = 60;
-            this.Text = $"{Number}";
+            Width = 60;
+            Height = 60;
+            Text = $"{Number}";
             //this.BackColor = GetCircleColor();
 
             Graphics g = e.Graphics;
-            SizeF sizef = g.MeasureString(this.Text, this.Font);
+            SizeF sizef = g.MeasureString(Text, Font);
             using Brush circleBrush = new SolidBrush( GetCircleColor() );
             g.FillEllipse(circleBrush, 0, 0, 59, 59);
             using Brush textBrush = new SolidBrush(Color.White);
-            g.DrawString(this.Text, this.Font, textBrush, (int)(Number < 10 ? (sizef.Width / 2)+ 4: (sizef.Width / 4)), (sizef.Height / 4)-2);
+            g.DrawString(Text, Font, textBrush, (int)(Number < 10 ? sizef.Width / 2+ 4: sizef.Width / 4), sizef.Height / 4-2);
         }
     }
 }
