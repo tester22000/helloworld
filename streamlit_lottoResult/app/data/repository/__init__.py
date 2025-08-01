@@ -1,0 +1,1 @@
+from app.data.repository.lotto_draw_result_repository import *
